@@ -13,4 +13,15 @@ describe('Game', () => {
     expect(game.board.at(4, 3)).toBe(Token.Black)
     expect(game.board.at(4, 4)).toBe(Token.White)
   })
+
+  test('placement', () => {
+    const game = new Game()
+    expect(game.current_turn()).toBe(Token.White)
+    expect(game.place(0, 0)).toBe(false)
+    expect(game.current_turn()).toBe(Token.White)
+    expect(game.place(3, 3)).toBe(false)
+    expect(game.current_turn()).toBe(Token.White)
+    //expect(game.current_turn()).toBe(Token.Black)
+
+  })
 })
