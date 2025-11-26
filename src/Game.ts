@@ -4,7 +4,7 @@ export enum Token {
   Empty,
 }
 
-export default class Game {
+export class Game {
   board_ref: Board
   turn: Token
 
@@ -31,7 +31,7 @@ class Board {
   }
 
   at(x: number, y: number): Token {
-    return Token.Black
+    return this.board[x][y]
   }
 
   init() {
