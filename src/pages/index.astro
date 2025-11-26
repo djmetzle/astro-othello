@@ -1,6 +1,6 @@
 ---
 import '../styles/sytle.css';
-import Othello from '../components/Othello.astro'
+import Othello from '../components/Othello.vue'
 ---
 
 <html lang="en">
@@ -12,6 +12,6 @@ import Othello from '../components/Othello.astro'
 		<title>Othello - djmetzle.io</title>
 	</head>
 	<body>
-		<Othello />
+		<Othello client:only="vue" />
 	</body>
 </html>
