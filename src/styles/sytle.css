@@ -1,0 +1,12 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins and padding from body and html */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure body and html occupy full viewport height */
+  width: 100%;  /* Ensure body and html occupy full viewport width */
+  overflow: hidden; /* Prevent scrolling if content exceeds viewport */
+}
