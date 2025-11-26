@@ -12,5 +12,4 @@
 
 <script setup lang="ts">
   import StatusBar from './StatusBar.vue'
-  console.log('foo');
 </script>
