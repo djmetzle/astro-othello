@@ -57,9 +57,35 @@ body {
 }
 
 .game-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   height: 90%;
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   background-color: #e0e0e0;
   border: 1px solid #555;
+}
+
+.gamerow {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 1;
+}
+
+.gamecell {
+  display:flex;
+  flex-grow: 1;
+  border: 2px solid black;
+}
+
+.token {
+  padding: 4px;
+  height: 100%;
+  width: 100%;
+  background: #AAA;
+  margin: auto;
 }
