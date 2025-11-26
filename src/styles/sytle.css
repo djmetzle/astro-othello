@@ -80,12 +80,21 @@ body {
   display:flex;
   flex-grow: 1;
   border: 2px solid black;
+  background: #899;
 }
 
 .token {
-  padding: 4px;
+  border-radius: 50%;
   height: 100%;
   width: 100%;
-  background: #AAA;
   margin: auto;
+}
+
+.token.black {
+  background: #000;
+  color: white;
+}
+
+.token.white {
+  background: #FFF;
 }

@@ -42,9 +42,9 @@ class Board {
       }
     }
 
-    this.board[3][4] = Token.White
-    this.board[3][5] = Token.Black
-    this.board[4][4] = Token.Black
-    this.board[4][5] = Token.White
+    this.board[3][3] = Token.White
+    this.board[3][4] = Token.Black
+    this.board[4][3] = Token.Black
+    this.board[4][4] = Token.White
   }
 }
