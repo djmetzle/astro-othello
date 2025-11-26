@@ -42,11 +42,11 @@ export class Game {
         && (0 <= y_offset && y_offset < 8)) {
         const offset_token = this.board.at(x_offset, y_offset);
         if (offset_token !== Token.Empty && offset_token !== this.turn) {
-          return true;
+          return true
         }
       }
     }
-    return false;
+    return false
   }
 
   pencil(): number[][] {
