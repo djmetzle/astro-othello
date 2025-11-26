@@ -25,6 +25,8 @@ export class Game {
     if (!this.valid(x, y)) {
       return false;
     }
+    this.board.board[x][y] = this.turn
+    this.turn = this.turn == Token.White ? Token.Black : Token.White
     return true;
   }
 
@@ -33,9 +35,9 @@ export class Game {
       return false;
     }
 
-    for (let offset in this.pencil()) {
-      const x_offset = +x + +offset[0]
-      const y_offset = +y + +offset[1]
+    for (let offset of this.pencil()) {
+      const x_offset = x + offset[0]
+      const y_offset = y + offset[1]
       if ((0 <= x_offset && x_offset < 8)
         && (0 <= y_offset && y_offset < 8)) {
         const offset_token = this.board.at(x_offset, y_offset);

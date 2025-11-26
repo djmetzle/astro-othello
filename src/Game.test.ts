@@ -21,7 +21,9 @@ describe('Game', () => {
     expect(game.current_turn()).toBe(Token.White)
     expect(game.place(3, 3)).toBe(false)
     expect(game.current_turn()).toBe(Token.White)
-    //expect(game.current_turn()).toBe(Token.Black)
 
+    expect(game.place(5, 2)).toBe(true)
+    expect(game.board.at(5, 2)).toBe(Token.White)
+    expect(game.current_turn()).toBe(Token.Black)
   })
 })

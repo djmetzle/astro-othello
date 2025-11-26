@@ -10,7 +10,7 @@
   import StatusBar from './StatusBar.vue'
   import GameBoard from './GameBoard.vue'
 
-  import Game from '../Game.ts'
+  import {Game} from '../Game.ts'
 
   const game = ref(new Game());
   provide('game', game);
