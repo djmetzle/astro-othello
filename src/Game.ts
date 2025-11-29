@@ -13,8 +13,12 @@ export class Game {
     this.turn = Token.White
   }
 
-  current_turn() {
+  current_turn(): Token {
     return this.turn
+  }
+
+  other_turn(): Token {
+    return this.turn === Token.White ? Token.Black : Token.White
   }
 
   get board() {
@@ -26,7 +30,7 @@ export class Game {
       return false;
     }
     this.capture(x, y);
-    this.turn = this.turn == Token.White ? Token.Black : Token.White
+    this.turn = this.other_turn()
     return true;
   }
 
@@ -59,6 +63,32 @@ export class Game {
 
   capture(x: number, y: number): void {
     this.board.board[x][y] = this.turn
+    const toFlip = []
+
+    for (let offset of this.board.pencil()) {
+      const line = [];
+      let x_offset = x + offset[0]
+      let y_offset = y + offset[1]
+      for (let i = 1; i < 7; i++) {
+        if (!this.board.valid(x_offset, y_offset)) {
+          break
+        }
+        if (this.board.at(x_offset, y_offset) === this.other_turn()) {
+          line.push([x_offset, y_offset])
+        }
+
+        if (this.board.at(x_offset, y_offset) === this.turn) {
+          toFlip.push(line)
+          break
+        }
+        x_offset += offset[0]
+        y_offset += offset[1]
+      }
+    }
+
+    for (let captured of toFlip.flat(1)) {
+      this.board.board[captured[0]][captured[1]] = this.turn
+    }
   }
 }
 

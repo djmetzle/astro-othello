@@ -40,7 +40,7 @@ describe('Game', () => {
       expect(game.place(2, 4)).toBe(true)
       expect(game.board.at(2, 4)).toBe(Token.White)
       // Should flip
-      expect(game.board.at(3, 4)).toBe(Token.Black)
+      expect(game.board.at(3, 4)).toBe(Token.White)
     })
   })
 })
