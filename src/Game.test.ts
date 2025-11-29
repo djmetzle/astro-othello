@@ -14,17 +14,24 @@ describe('Game', () => {
     expect(game.board.at(4, 4)).toBe(Token.White)
   })
 
-  test('placement', () => {
-    const game = new Game()
-    expect(game.current_turn()).toBe(Token.White)
-    expect(game.place(0, 0)).toBe(false)
-    expect(game.current_turn()).toBe(Token.White)
-    expect(game.place(3, 3)).toBe(false)
-    expect(game.current_turn()).toBe(Token.White)
+  describe('placement', () => {
+    test('basics', () => {
+      const game = new Game()
+      expect(game.current_turn()).toBe(Token.White)
+      expect(game.place(0, 0)).toBe(false)
+      expect(game.current_turn()).toBe(Token.White)
+      expect(game.place(3, 3)).toBe(false)
+      expect(game.current_turn()).toBe(Token.White)
 
-    expect(game.place(2, 4)).toBe(true)
-    expect(game.board.at(2, 4)).toBe(Token.White)
-    expect(game.current_turn()).toBe(Token.Black)
+      expect(game.place(2, 4)).toBe(true)
+      expect(game.board.at(2, 4)).toBe(Token.White)
+      expect(game.current_turn()).toBe(Token.Black)
+    })
+
+    test('rules', () => {
+      const game = new Game()
+      expect(game.place(2, 5)).toBe(false)
+    })
   })
 
   describe('reversi', () => {
