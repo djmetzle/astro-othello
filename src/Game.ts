@@ -25,7 +25,7 @@ export class Game {
     if (!this.valid(x, y)) {
       return false;
     }
-    this.board.board[x][y] = this.turn
+    this.capture(x, y);
     this.turn = this.turn == Token.White ? Token.Black : Token.White
     return true;
   }
@@ -56,6 +56,10 @@ export class Game {
     }
     return false
   }
+
+  capture(x: number, y: number): void {
+    this.board.board[x][y] = this.turn
+  }
 }
 
 class Board {
@@ -85,7 +89,7 @@ class Board {
   }
 
   valid(x: number, y: number): boolean {
-    return (0 <= x && x < 8) && (0 <= y && y < 8);
+    return (0 <= x && x < 8) && (0 <= y && y < 8)
   }
 
   pencil(): number[][] {
@@ -98,6 +102,6 @@ class Board {
       [1, -1],
       [1, 0],
       [1, 1],
-    ];
+    ]
   }
 }
