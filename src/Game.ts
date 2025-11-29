@@ -35,31 +35,26 @@ export class Game {
       return false;
     }
 
-    for (let offset of this.pencil()) {
-      const x_offset = x + offset[0]
-      const y_offset = y + offset[1]
-      if ((0 <= x_offset && x_offset < 8)
-        && (0 <= y_offset && y_offset < 8)) {
+    for (let offset of this.board.pencil()) {
+      let x_offset = x + offset[0]
+      let y_offset = y + offset[1]
+      if (this.board.valid(x_offset, y_offset)) {
         const offset_token = this.board.at(x_offset, y_offset);
         if (offset_token !== Token.Empty && offset_token !== this.turn) {
-          return true
+          for (let i = 1; i < 7; i++) {
+            x_offset += offset[0]
+            y_offset += offset[1]
+            if (!this.board.valid(x_offset, y_offset)) {
+              break
+            }
+            if (this.board.at(x_offset, y_offset) === this.turn) {
+              return true
+            }
+          }
         }
       }
     }
     return false
-  }
-
-  pencil(): number[][] {
-    return [
-      [-1, -1],
-      [-1, 0],
-      [-1, 1],
-      [0, -1],
-      [0, 1],
-      [1, -1],
-      [1, 0],
-      [1, 1],
-    ];
   }
 }
 
@@ -87,5 +82,22 @@ class Board {
     this.board[3][4] = Token.Black
     this.board[4][3] = Token.Black
     this.board[4][4] = Token.White
+  }
+
+  valid(x: number, y: number): boolean {
+    return (0 <= x && x < 8) && (0 <= y && y < 8);
+  }
+
+  pencil(): number[][] {
+    return [
+      [-1, -1],
+      [-1, 0],
+      [-1, 1],
+      [0, -1],
+      [0, 1],
+      [1, -1],
+      [1, 0],
+      [1, 1],
+    ];
   }
 }
