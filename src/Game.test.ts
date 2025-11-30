@@ -14,33 +14,55 @@ describe('Game', () => {
     expect(game.board.at(4, 4)).toBe(Token.White)
   })
 
-  describe('placement', () => {
-    test('basics', () => {
+  describe('rules', () => {
+    test('invalid moves', () => {
       const game = new Game()
       expect(game.current_turn()).toBe(Token.White)
       expect(game.place(0, 0)).toBe(false)
-      expect(game.current_turn()).toBe(Token.White)
       expect(game.place(3, 3)).toBe(false)
-      expect(game.current_turn()).toBe(Token.White)
-
-      expect(game.place(2, 4)).toBe(true)
-      expect(game.board.at(2, 4)).toBe(Token.White)
-      expect(game.current_turn()).toBe(Token.Black)
-    })
-
-    test('rules', () => {
-      const game = new Game()
       expect(game.place(2, 5)).toBe(false)
+      expect(game.current_turn()).toBe(Token.White)
     })
-  })
 
-  describe('reversi', () => {
     test('simple adjacent', () => {
       const game = new Game()
+      expect(game.board.at(3, 4)).toBe(Token.Black)
       expect(game.place(2, 4)).toBe(true)
       expect(game.board.at(2, 4)).toBe(Token.White)
-      // Should flip
+      // Flipped
       expect(game.board.at(3, 4)).toBe(Token.White)
+    })
+
+    test('lines', () => {
+      const game = new Game()
+      game.board.board[3][5] = Token.Black
+      expect(game.board.at(3, 4)).toBe(Token.Black)
+      expect(game.board.at(3, 5)).toBe(Token.Black)
+
+      expect(game.place(3, 6)).toBe(true)
+
+      expect(game.board.at(3, 6)).toBe(Token.White)
+      // Flipped
+      expect(game.board.at(3, 4)).toBe(Token.White)
+      expect(game.board.at(3, 5)).toBe(Token.White)
+    })
+
+    test('when no moves', () => {
+      const game = new Game()
+      // Clear board
+      game.board.board[3][3] = Token.Empty
+      game.board.board[3][4] = Token.Empty
+      game.board.board[4][3] = Token.Empty
+      game.board.board[4][4] = Token.Empty
+
+      game.board.board[0][1] = Token.Black
+      game.board.board[1][0] = Token.Black
+      game.board.board[0][2] = Token.White
+
+      expect(game.current_turn()).toBe(Token.White)
+      expect(game.place(0, 0)).toBe(true)
+      // Skipped
+      expect(game.current_turn()).toBe(Token.White)
     })
   })
 })
