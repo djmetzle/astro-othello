@@ -20,7 +20,7 @@ body {
 }
 
 .game-frame {
-  background: #000;
+  background: #222;
   aspect-ratio: 1 / 1;
 
   margin: auto;
@@ -49,10 +49,10 @@ body {
   padding: 0 5%;
 
   background-color: #AAA;
-  color: white;
+  color: black;
   font-family: sans-serif;
   font-weight: bold;
-  font-size: 3vmin;
+  font-size: 6vmin;
   border-bottom: 2px solid #00FF80;
 }
 
@@ -91,16 +91,18 @@ body {
 
 .token {
   border-radius: 50%;
-  height: 100%;
-  width: 100%;
-  margin: auto;
+  height: 90%;
+  width: 90%;
+  margin: 5%;
 }
 
 .token.black {
-  background: #000;
+  background: #222;
   color: white;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .token.white {
-  background: #FFF;
+  background: #DDD;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
 }
