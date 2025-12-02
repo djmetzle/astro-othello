@@ -99,10 +99,10 @@ body {
 .token.black {
   background: #222;
   color: white;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .token.white {
   background: #DDD;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
