@@ -31,6 +31,13 @@ export class Game {
     }
     this.capture(x, y);
     this.turn = this.other_turn()
+    if (!this.check_have_turn()) {
+      this.turn = this.other_turn()
+      if (!this.check_have_turn()) {
+        // Game Over!
+        return true;
+      }
+    }
     return true;
   }
 
@@ -89,6 +96,17 @@ export class Game {
     for (let captured of toFlip.flat(1)) {
       this.board.board[captured[0]][captured[1]] = this.turn
     }
+  }
+
+  check_have_turn(): boolean {
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
+        if (this.valid(i, j)) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
 
