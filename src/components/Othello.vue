@@ -6,12 +6,12 @@
 </template>
 
 <script setup lang="ts">
-  import { provide, ref } from 'vue'
+  import { provide, shallowRef } from 'vue'
   import StatusBar from './StatusBar.vue'
   import GameBoard from './GameBoard.vue'
 
   import {Game} from '../Game.ts'
 
-  const game = ref(new Game());
+  const game = shallowRef(new Game());
   provide('game', game);
 </script>

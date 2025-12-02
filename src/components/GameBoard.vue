@@ -11,15 +11,16 @@
 </template>
 
 <script setup lang="ts">
-  import { inject } from 'vue'
+  import { inject, triggerRef } from 'vue'
   import { Token } from '../Game.ts'
 
   const game = inject('game')
-  console.log(game.value.board);
 
   function clickHandler(event) {
     const i = parseInt(event.currentTarget.getAttribute('data-i'))
     const j = parseInt(event.currentTarget.getAttribute('data-j'))
-    game.value.place(i, j)
+    if (game.value.place(i, j)) {
+      triggerRef(game)
+    }
   }
 </script>

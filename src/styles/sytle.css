@@ -56,6 +56,12 @@ body {
   border-bottom: 2px solid #00FF80;
 }
 
+.token-status {
+  height:90%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid black;
+}
+
 .game-board {
   display: flex;
   flex-direction: column;
