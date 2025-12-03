@@ -52,7 +52,7 @@ export class Game {
       if (this.board.valid(x_offset, y_offset)) {
         const offset_token = this.board.at(x_offset, y_offset);
         if (offset_token !== Token.Empty && offset_token !== this.turn) {
-          for (let i = 1; i < 7; i++) {
+          for (let i = 1; i < 8; i++) {
             x_offset += offset[0]
             y_offset += offset[1]
             if (!this.board.valid(x_offset, y_offset)) {
@@ -76,7 +76,7 @@ export class Game {
       const line = [];
       let x_offset = x + offset[0]
       let y_offset = y + offset[1]
-      for (let i = 1; i < 7; i++) {
+      for (let i = 1; i < 8; i++) {
         if (!this.board.valid(x_offset, y_offset)) {
           break
         }

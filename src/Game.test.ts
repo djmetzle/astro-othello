@@ -64,5 +64,28 @@ describe('Game', () => {
       // Skipped
       expect(game.current_turn()).toBe(Token.White)
     })
+
+    test('full line', () => {
+      const game = new Game()
+      // Clear board
+      game.board.board[3][3] = Token.Empty
+      game.board.board[3][4] = Token.Empty
+      game.board.board[4][3] = Token.Empty
+      game.board.board[4][4] = Token.Empty
+
+      game.board.board[0][0] = Token.White
+
+      for (let i = 1; i < 7; i++) {
+        game.board.board[0][i] = Token.Black
+      }
+
+      expect(game.current_turn()).toBe(Token.White)
+      expect(game.place(0, 7)).toBe(true)
+      expect(game.current_turn()).toBe(Token.White)
+
+      for (let i = 0; i <= 7; i++) {
+        expect(game.board.at(0, i)).toBe(Token.White)
+      }
+    })
   })
 })
