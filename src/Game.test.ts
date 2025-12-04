@@ -100,4 +100,49 @@ describe('Game', () => {
       }
     })
   })
+
+  describe('winner', () => {
+    test('game in progress', () => {
+      const game = new Game()
+      expect(game.winner()).toBe(false)
+    })
+
+    test('white wins', () => {
+      const game = new Game()
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          game.board.board[i][j] = Token.White
+        }
+      }
+      game.complete = true
+      expect(game.winner()).toBe(Token.White)
+    })
+
+    test('black wins', () => {
+      const game = new Game()
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          game.board.board[i][j] = Token.Black
+        }
+      }
+      game.complete = true
+      expect(game.winner()).toBe(Token.Black)
+    })
+
+    test('wins', () => {
+      const game = new Game()
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 8; j++) {
+          game.board.board[i][j] = Token.White
+        }
+      }
+      for (let i = 4; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          game.board.board[i][j] = Token.Black
+        }
+      }
+      game.complete = true
+      expect(game.winner()).toBe('tie')
+    })
+  })
 })
