@@ -2,7 +2,6 @@ import { describe, expect, test } from 'vitest'
 import { Game, Token } from './Game.ts'
 
 function clearBoard(game: Game) {
-  // Clear board
   game.board.board[3][3] = Token.Empty
   game.board.board[3][4] = Token.Empty
   game.board.board[4][3] = Token.Empty
@@ -129,7 +128,7 @@ describe('Game', () => {
       expect(game.winner()).toBe(Token.Black)
     })
 
-    test('wins', () => {
+    test('tie', () => {
       const game = new Game()
       for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 8; j++) {
