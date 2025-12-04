@@ -4,7 +4,10 @@
           <div class="token white" v-if="turn == Token.White"></div>
           <div class="token" v-if="turn == Token.Black"></div>
     </div>
-    <p>Othello</p>
+    <p v-if="!winner">Othello</p>
+    <p v-if="winner === 'tie'">TIED!</p>
+    <p class="winner" v-if="winner === Token.White">White Wins!</p>
+    <p v-if="winner === Token.Black">Black Wins!</p>
     <div class="token-status">
           <div class="token" v-if="turn == Token.White"></div>
           <div class="token black" v-if="turn == Token.Black"></div>
@@ -18,4 +21,5 @@
 
   const game = inject('game')
   const turn = computed(() => game.value.current_turn())
+  const winner = computed(() => game.value.winner())
 </script>
