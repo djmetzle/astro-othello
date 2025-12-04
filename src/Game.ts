@@ -88,6 +88,10 @@ export class Game {
           toFlip.push(line)
           break
         }
+
+        if (this.board.at(x_offset, y_offset) === Token.Empty) {
+          break
+        }
         x_offset += offset[0]
         y_offset += offset[1]
       }
@@ -115,16 +119,18 @@ class Board {
 
   constructor() {
     this.board = []
-    this.init()
+    for (let i = 0; i < 8; i++) {
+      this.board[i] = []
+    }
+    this.reset()
   }
 
   at(x: number, y: number): Token {
     return this.board[x][y]
   }
 
-  init() {
+  reset(): void {
     for (let i = 0; i < 8; i++) {
-      this.board[i] = []
       for (let j = 0; j < 8; j++) {
         this.board[i][j] = Token.Empty
       }

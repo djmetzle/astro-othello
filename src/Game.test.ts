@@ -1,6 +1,14 @@
 import { describe, expect, test } from 'vitest'
 import { Game, Token } from './Game.ts'
 
+function clearBoard(game: Game) {
+  // Clear board
+  game.board.board[3][3] = Token.Empty
+  game.board.board[3][4] = Token.Empty
+  game.board.board[4][3] = Token.Empty
+  game.board.board[4][4] = Token.Empty
+}
+
 describe('Game', () => {
   test('init', () => {
     const game = new Game()
@@ -47,13 +55,21 @@ describe('Game', () => {
       expect(game.board.at(3, 5)).toBe(Token.White)
     })
 
+    test('lines connected', () => {
+      const game = new Game()
+      clearBoard(game)
+      game.board.board[4][4] = Token.White
+      game.board.board[5][5] = Token.Black
+      game.board.board[7][5] = Token.White
+      game.board.board[7][6] = Token.Black
+
+      expect(game.place(7, 7)).toBe(true)
+      expect(game.board.at(5, 5)).toBe(Token.Black)
+    })
+
     test('when no moves', () => {
       const game = new Game()
-      // Clear board
-      game.board.board[3][3] = Token.Empty
-      game.board.board[3][4] = Token.Empty
-      game.board.board[4][3] = Token.Empty
-      game.board.board[4][4] = Token.Empty
+      clearBoard(game)
 
       game.board.board[0][1] = Token.Black
       game.board.board[1][0] = Token.Black
@@ -67,11 +83,7 @@ describe('Game', () => {
 
     test('full line', () => {
       const game = new Game()
-      // Clear board
-      game.board.board[3][3] = Token.Empty
-      game.board.board[3][4] = Token.Empty
-      game.board.board[4][3] = Token.Empty
-      game.board.board[4][4] = Token.Empty
+      clearBoard(game)
 
       game.board.board[0][0] = Token.White
 
