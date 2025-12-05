@@ -5,7 +5,7 @@
           <div class="token" v-if="turn == Token.Black"></div>
     </div>
     <p>{{counts[0]}}</p>
-    <p v-if="!winner">Othello</p>
+    <p v-if="winner === false">Othello</p>
     <p v-if="winner === 'tie'">TIED!</p>
     <p class="winner" v-if="winner === Token.White">White Wins!</p>
     <p v-if="winner === Token.Black">Black Wins!</p>
