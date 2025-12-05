@@ -66,6 +66,17 @@ describe('Game', () => {
       expect(game.board.at(5, 5)).toBe(Token.Black)
     })
 
+    test('lines contiguous', () => {
+      const game = new Game()
+      clearBoard(game)
+      game.board.board[4][4] = Token.White
+      game.board.board[6][4] = Token.White
+      game.board.board[5][5] = Token.Black
+      game.board.board[6][6] = Token.Black
+
+      expect(game.place(6, 7)).toBe(false)
+    })
+
     test('when no moves', () => {
       const game = new Game()
       clearBoard(game)

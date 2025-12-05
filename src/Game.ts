@@ -72,6 +72,9 @@ export class Game {
             if (!this.board.valid(x_offset, y_offset)) {
               break
             }
+            if (this.board.at(x_offset, y_offset) === Token.Empty) {
+              break
+            }
             if (this.board.at(x_offset, y_offset) === this.turn) {
               return true
             }
