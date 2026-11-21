@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://othello.djmetzle.io/sitemap.xml
